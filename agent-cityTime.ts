@@ -1,0 +1,27 @@
+import { AgentTool, FunctionTool, LlmAgent } from "@google/adk";
+import { z } from "zod";
+
+const getCurrentTime = new FunctionTool({
+  name: "get_current_time",
+  description: "returns the current time in a specified city.",
+  parameters: z.object({
+    city: z
+      .string()
+      .describe("The name of the city for which to retireve the current time."),
+  }),
+  execute: ({ city }) => {
+    return {
+      status: "success",
+      report: `The current time in ${city} is 10:47 am`,
+    };
+  },
+});
+
+export const rootAgent = new LlmAgent({
+  name: "hello_time_agent",
+  model: "gemini-2.5-flash",
+  description: "Tells the current time in a specified city.",
+  instruction: `You are a helpful assistant that tells the current time in a city.
+    Use the 'getCurrentTime' tool for this purpose.`,
+  tools: [getCurrentTime],
+});

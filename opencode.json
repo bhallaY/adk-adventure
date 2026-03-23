@@ -1,0 +1,19 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "mcp": {
+        "adk-docs": {
+            "type": "local",
+            "command": [
+                "uvx",
+                "--from",
+                "mcpdoc",
+                "mcpdoc",
+                "--urls",
+                "AgentDevelopmentKit:https://google.github.io/adk-docs/llms.txt",
+                "--transport",
+                "stdio"
+            ],
+            "enabled": true
+        }
+    }
+}
