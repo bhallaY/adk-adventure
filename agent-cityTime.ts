@@ -1,4 +1,4 @@
-import { AgentTool, FunctionTool, LlmAgent } from "@google/adk";
+import { FunctionTool, LlmAgent } from "@google/adk";
 import { z } from "zod";
 
 const getCurrentTime = new FunctionTool({
