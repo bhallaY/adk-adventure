@@ -1,9 +1,9 @@
-import { LlmAgent, Runner, stringifyContent } from "@google/adk";
-import type { BaseSessionService, Session } from "@google/adk";
+import { Runner, stringifyContent } from "@google/adk";
+import type { BaseAgent, BaseSessionService, Session } from "@google/adk";
 import { createUserContent } from "@google/genai";
 
 export async function runAgentQuery(
-  agent: LlmAgent,
+  agent: BaseAgent,
   query: string,
   session: Session,
   userId: string,
@@ -24,23 +24,22 @@ export async function runAgentQuery(
       sessionId: session.id,
       newMessage: createUserContent(query),
     })) {
-      //   if (!isRouter) {
-      //     console.log("event!:", e);
-      //   }
       res.push(e);
     }
-  } catch (error) {
-    console.error("errored while running agent query", error);
-  }
+  } catch (error: any) {
+    const msg = error?.message ?? String(error);
 
-  //   if (!isRouter) {
-  //     console.log("\n", "Final Response:", res);
-  //   }
+    console.error("errored while running agent query", msg);
+  }
 
   const finalResponse = res[res.length - 1];
   if (finalResponse?.content?.parts?.length) {
     console.log(stringifyContent(finalResponse));
   }
+  if (!finalResponse) {
+    console.warn("no response from agent");
+    return "";
+  }
 
-  return res;
+  return stringifyContent(finalResponse);
 }
