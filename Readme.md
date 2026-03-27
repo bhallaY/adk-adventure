@@ -32,12 +32,13 @@ The `agent-*.ts` files are basic tool use and memory walkthroughs. The `agents-*
 ## Project Structure
 
 adk-adventure/
-├── helper.ts # Shared runner utility
-├── agent-_.ts # Individual agents
-├── agents-_.ts # Multi agent systems
-├── package.json
-└── tsconfig.json
+- helper.ts — shared runner utility
+- agent-*.ts — individual agents
+- agents-*.ts — multi-agent systems
+- package.json
+- tsconfig.json
 
+  
 ## Original Resources
 
 [Crash Course - ADK Beginner to Expert](https://codelabs.developers.google.com/onramp/instructions?hl=en#0)
