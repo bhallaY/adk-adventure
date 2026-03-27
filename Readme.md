@@ -27,7 +27,7 @@ The `agent-*.ts` files are basic tool use and memory walkthroughs. The `agents-*
 
 - Meet prerequisites
 - `npm install`
-- Run any agent with either `npm ts-node ${AGENT_FILE}.ts` or `npm adk run ${AGENT_FILE}.ts`
+- Run any agent with either `npx ts-node ${AGENT_FILE}.ts` or `npx adk run ${AGENT_FILE}.ts`
 
 ## Project Structure
 
